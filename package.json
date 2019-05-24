@@ -1,0 +1,26 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "test node js ",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "dir"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jvitorn/test-nodeJS.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "jvitorn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jvitorn/test-nodeJS/issues"
+  },
+  "homepage": "https://github.com/jvitorn/test-nodeJS#readme"
+}
