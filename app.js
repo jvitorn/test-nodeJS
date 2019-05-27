@@ -1,12 +1,18 @@
+//consts
 const express = require('express');
 const app  = express();
-//folder
-//app.use(express.static('app'));
+const port = 3000;
+const users = [
+  {name:'joao',email:'joao@joao.com'},
+  {name:'jeff',email:'jeff@com.br'}
+]
+//add folders
+  app.use('/routes',express.static(__dirname + '/routes'));
+  app.use('/views',express.static(__dirname + '/views'));
 //index
-app.get('/',function(req,res){
-  res.send("root");
-});
+
+//
 //server
-app.listen(3000,function(){
-  console.log('Listen in port 3000');
+app.listen(port,function(){
+  console.log('Server is running at localhost:'+ port);
 });
