@@ -3,16 +3,42 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheets/style.css">
     <title>form</title>
+    <style media="screen">
+    body{
+        background-image: url('images/form.jpg');
+        background-size: cover;
+    }
+    </style>
   </head>
   <body>
-    <h1>Hello Word</h1>
-    <form class="" action="/form" method="get">
-      <div class="form-group">
-        <label for="">Email</label>
-        <input type="text" name="email" class="form-control" id="" placeholder="insert to email">
-        <input type="submit" class="btn btn-success" name="button">
+    <div class="container-fluid">
+      <div class="row form-information p-5">
+        <!--form -->
+        <div class="col-md-6 offset-md-3 form-information-validation p-5">
+          <div class="shadow-lg p-5 mb-5 bg-dark  border  rounded">
+            <h3 class="text-white text-center p-2">Subscribe-Me</h3>
+            <form class="text-center" action="/form" method="post">
+              <div class="form-group">
+                <input type="text" name="name" class="form-control" placeholder="Name">
+              </div>
+              <div class="form-group">
+                <input type="email" name="email" class="form-control" id="" placeholder="Email">
+              </div>
+              <div class="form-group">
+                <input type="password" name="password" class="form-control" placeholder="Password">
+              </div>
+              <div class="form-group">
+
+              </div>
+              <div class="form-group">
+                <input type="submit" class="btn btn-block btn-outline-primary" name="button" placeholder="Submit">
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
-    </form>
+    </div>
   </body>
 </html>

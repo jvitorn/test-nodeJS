@@ -3,13 +3,14 @@ const http  = require('http');
 const express = require('express');
 const app  = express();
 const port = 3000;
-const users = [
-  {name:'joao',email:'joao@joao.com'},
-  {name:'jeff',email:'jeff@com.br'}
-]
+
 //add folders
   app.use('/routes',express.static(__dirname + '/routes'));
+  app.use('/routes/stylesheets',express.static(__dirname + '/routes/stylesheets'));
+  app.use('/routes/images',express.static(__dirname + '/routes/images'));
+  app.use(express.static(__dirname + '/public'));
   app.use('/views',express.static(__dirname + '/views'));
+
 //encode
 app.use(express.urlencoded());
 //index.
@@ -18,6 +19,7 @@ app.post('/form',function(req,res){
   console.log(email);
   res.end();
 });
+
 //
 //server
 app.listen(port,function(){
