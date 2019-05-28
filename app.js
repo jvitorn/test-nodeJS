@@ -9,8 +9,10 @@ const users = [
 //add folders
   app.use('/routes',express.static(__dirname + '/routes'));
   app.use('/views',express.static(__dirname + '/views'));
-//index
-
+//index.
+app.get('/form',function(req,res){
+  res.send(req.body);
+});
 //
 //server
 app.listen(port,function(){
