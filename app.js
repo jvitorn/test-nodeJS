@@ -8,16 +8,23 @@ const port = 3000;
   app.use('/routes',express.static(__dirname + '/routes'));
   app.use('/routes/stylesheets',express.static(__dirname + '/routes/stylesheets'));
   app.use('/routes/images',express.static(__dirname + '/routes/images'));
+  app.use('/routes/form',express.static(__dirname + '/routes/form.html'));
+  app.use('/routes/painel',express.static(__dirname + '/routes/painel.html');
   app.use(express.static(__dirname + '/public'));
   app.use('/views',express.static(__dirname + '/views'));
 
 //encode
 app.use(express.urlencoded());
 //index.
-app.post('/form',function(req,res){
+app.post('/return',function(req,res){
   var email = req.body.email;
-  console.log(email);
+  var password = req.body.password;
+  var name = req.body.name;
+  res.send('Your Name is ' + name + ' Your Email is ' + email + ' Your Password ' + password);
   res.end();
+  if (name == joao){
+    window.location('/routes/painel');
+  }
 });
 
 //
