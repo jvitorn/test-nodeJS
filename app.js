@@ -3,6 +3,7 @@ const http  = require('http');
 const express = require('express');
 const app  = express();
 const port = 3000;
+const path = require('path');
 
 //add folders
   app.use('/routes',express.static(__dirname + '/routes'));
@@ -13,7 +14,8 @@ const port = 3000;
   app.use('/login',express.static(__dirname + '/routes/login.html'));
   app.use(express.static(__dirname + '/public'));
   app.use('/views',express.static(__dirname + '/views'));
-
+  //folders statics absoluties 
+  app.use(express.static(path.join(__dirname,"public")));
 //encode
 app.use(express.urlencoded());
 //index.
