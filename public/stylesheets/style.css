@@ -1,1 +1,11 @@
-
+/* Painel */
+.icon{
+   font-size:15px;
+}
+img .user{
+    max-width: 80%;
+    height: auto;
+}
+.User-information .image{
+    max-width: 80%;
+}
