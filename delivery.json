@@ -1,0 +1,15 @@
+"Delivery":[
+    {
+        "Restaurant":"Mark Foods",
+        "Type":"Hamburguer",
+        "Location":"Street Ri Dark",
+        "Number":"321",
+        "Menu":[
+            {
+                "Item":"Hamburguer Vegan-Terror",
+                "Ingredients":"Bread,Tomatoes,vegan cheese,
+                Burger From Soy,Vegan Barbecue"
+            }
+        ]    
+    }
+]

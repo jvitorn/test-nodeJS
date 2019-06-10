@@ -9,3 +9,10 @@ img .user{
 .User-information .image{
     max-width: 80%;
 }
+/* utilities */
+.divider {
+    height: 1px;
+    overflow: hidden;
+    background-color: #e0e0e0;
+  }
+  
