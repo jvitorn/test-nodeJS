@@ -12,6 +12,7 @@ const path = require('path');
   app.use('/sigup',express.static(__dirname + '/routes/form.html'));
   app.use('/painel',express.static(__dirname + '/public/painel.html'));
   app.use('/login',express.static(__dirname + '/routes/login.html'));
+  app.use('/test',express.static(__dirname + '/public/test.html'));
   app.use(express.static(__dirname + '/public'));
   app.use('/views',express.static(__dirname + '/views'));
   //folders statics absoluties 
@@ -29,7 +30,15 @@ app.post('/return',function(req,res){
     window.location('/routes/painel');
   }
 });
-
+//Get informations from delivery.json 
+app.get('/delivery',function(req,res){
+  //call filesistem for write json
+  const fs = require('fs');
+  //save in var
+  const jsonDelivery = fs.readFileSync('./delivery.json','utf-8');
+  //return
+  return res.send(jsonDelivery);
+});
 //
 //server
 app.listen(port,function(){

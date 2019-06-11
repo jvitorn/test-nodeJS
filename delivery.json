@@ -1,4 +1,4 @@
-"Delivery":[
+ [
     {
         "Restaurant":"Mark Foods",
         "Type":"Hamburguer",
@@ -7,9 +7,49 @@
         "Menu":[
             {
                 "Item":"Hamburguer Vegan-Terror",
-                "Ingredients":"Bread,Tomatoes,vegan cheese,
-                Burger From Soy,Vegan Barbecue"
+                "Ingredients":"Bread,Tomatoes,vegan cheese,Burger From Soy,Vegan Barbecue",
+                "Prices":"$12:00",
+                "Preparation Time":"00:30"
+            },
+            {
+                "Item":"Hotdog Terror-Chucky",
+                "Ingredients":"Bread Tostade,hamburger underdone,himalayan ketchup,cheease cheadar",
+                "Prices":"$12:00",
+                "Preparation Time":"00:45"
+            },
+            {
+                "Item":"Burguer Terror-Jason",
+                "Ingredients":"Bread Tostade and temperate in chili,hamburger underdone,himalayan ketchup, mayonnaise temperate,cheease cheadar,tomatoes",
+                "Prices":"$15:00",
+                "Preparation Time":"00:45"
+            }
+        ]    
+    },
+    {
+        "Restaurant":"Hoot Foods",
+        "Type":"Pizza",
+        "Location":"Street Darkness",
+        "Number":"683",
+        "Menu":[
+            {
+                "Item":"Pizza Iron-cheader",
+                "Ingredients":"Chesse Sauce, mozzarella, bacon, sliced ​​tomatoes, catupiry and oregano ",
+                "Prices":"$10:00",
+                "Preparation Time":"00:25"
+            },
+            {
+                "Item":"Pizza Capitain-Pepperoni",
+                "Ingredients":"Sauce, mozzarella, spicy pepperoni, eggplant, sliced ​​onion and oregano",
+                "Prices":"$12:00",
+                "Preparation Time":"00:30"
+            },
+            {
+                "Item":"Pizza Spider-Portuguese",
+                "Ingredients":"Sauce, mozzarella, ham, calabresa, eggs, onion, olives and oregano.",
+                "Prices":"$15:00",
+                "Preparation Time":"00:45"
             }
         ]    
     }
+
 ]

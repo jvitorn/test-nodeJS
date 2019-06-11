@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--angularjs-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body ng-app="testModule">
+    <div class="teste" ng-controller="testController">
+            <ul ng-repeat="x in delivery">
+                <li>{{x.Restaurant}}</li>
+                <li>{{x.prices}}</li>
+            </ul>
+    </div>
+</body>
+<script>
+    var app = angular.module('testModule',[]);
+    app.controller('testController',function($scope,$http){
+        $http.get('/delivery').then(function(response){
+            $scope.delivery = response.data;
+        });
+    });
+</script>
+</html>
