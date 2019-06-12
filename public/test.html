@@ -10,10 +10,20 @@
 </head>
 <body ng-app="testModule">
     <div class="teste" ng-controller="testController">
-            <ul ng-repeat="x in delivery">
-                <li>{{x.Restaurant}}</li>
-                <li>{{x.prices}}</li>
-            </ul>
+            <ul ng-repeat="delivers in delivery">
+                    <li>{{delivers.Restaurant}}</li>
+                    <li>{{delivers.Type}}</li>
+                    <li>{{delivers.Location}}</li>
+                    <li>{{delivers.Number}}</li>
+                    <ul ng-repeat="x in food">
+                            <li>{{x.Prices}}</li>
+                            <li>{{x.Ingredients}}</li>
+                            <li>{{x.Preparation_Time}}</li>        
+                    </ul>
+            </ul>  
+            
+            
+            
     </div>
 </body>
 <script>
@@ -21,7 +31,13 @@
     app.controller('testController',function($scope,$http){
         $http.get('/delivery').then(function(response){
             $scope.delivery = response.data;
+            $scope.test = response.data[0]["Menu"];
+                //foreach for menu array
+                angular.forEach($scope.delivery,function(key,value){
+                    $scope.food = key["Menu"];
+                });
         });
+        
     });
 </script>
 </html>

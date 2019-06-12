@@ -7,7 +7,9 @@
     "express": "^4.17.0",
     "nodemon": "^1.19.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "var_dump": "^1.0.5"
+  },
   "scripts": {
     "test": "dir"
   },
