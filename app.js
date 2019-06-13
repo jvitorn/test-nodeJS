@@ -8,27 +8,19 @@ const path = require('path');
 //add folders
   app.use('/routes',express.static(__dirname + '/routes'));
   app.use('/stylesheets',express.static(__dirname + '/public/stylesheets'));
-  app.use('/images',express.static(__dirname + '/public/images'));
-  app.use('/sigup',express.static(__dirname + '/routes/form.html'));
+  app.use('/register',express.static(__dirname + '/public/register.html'));
   app.use('/painel',express.static(__dirname + '/public/painel.html'));
-  app.use('/login',express.static(__dirname + '/routes/login.html'));
+  app.use('/login',express.static(__dirname + '/public/login.html'));
   app.use('/test',express.static(__dirname + '/public/test.html'));
-  app.use(express.static(__dirname + '/public'));
   app.use('/views',express.static(__dirname + '/views'));
   //folders statics absoluties 
-  app.use(express.static(path.join(__dirname,"public")));
+  app.use('/',express.static(path.join(__dirname,"public")));
 //encode
 app.use(express.urlencoded());
-//index.
-app.post('/return',function(req,res){
-  var email = req.body.email;
-  var password = req.body.password;
-  var name = req.body.name;
-  res.send('Your Name is ' + name + ' Your Email is ' + email + ' Your Password ' + password);
-  res.end();
-  if (name == joao){
-    window.location('/routes/painel');
-  }
+
+//Get informations from Register
+app.post('/sigup',function(req,res){
+ 
 });
 //Get informations from delivery.json 
 app.get('/delivery',function(req,res){
@@ -39,7 +31,14 @@ app.get('/delivery',function(req,res){
   //return
   return res.send(jsonDelivery);
 });
-//
+//Get informations from login
+app.post('/reguests',function(req,res){
+  var email = req.body.email;
+  var password = req.body.password;
+  var name = req.body.name;
+  res.send('Your Name is ' + name + ' Your Email is ' + email + ' Your Password ' + password);
+});
+
 //server
 app.listen(port,function(){
   console.log('Server is running at localhost:'+ port);

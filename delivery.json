@@ -1,55 +1,98 @@
- [
+[{
+    "Project":[
     {
-        "Restaurant":"Mark Foods",
-        "Type":"Hamburguer",
-        "Location":"Street Ri Dark",
-        "Number":"321",
-        "Menu":[
+        
+        "Login":[
+                {
+                    "User":"jvitorn",
+                    "Email":"joaoeuno2011@gmail.com",
+                    "Password":"sla2018"
+                },
+                {
+                    "User":"jefferson-assis",
+                    "Email":"jefferson.silva492@etec.sp.gov.br",
+                    "Password":"jhonesjow"
+                },
+                {
+                    "User":"Jhonatancs",
+                    "Email":"jdc_santos@outlook.com",
+                    "Password":"**********"
+                },
+                {
+                    "User":"bestofflin3",
+                    "Email":"ec943077@gmail.com",
+                    "Password":"000000"
+                },
+                {
+                    "User":"Flash",
+                    "Email":"jonatas.neves@etec.sp.gov.br",
+                    "Password":"ReversoFlash"
+                },
+                {
+                    "User":"Nycolas-Guia",
+                    "Email":"nycolas.guias@gmail.com",
+                    "Password":"gearthird"
+                },
+                {
+                    "User":"kauan001",
+                    "Email":"kauanhenriquee123@hotmail.com",
+                    "Password":"kauan123"
+                }
+            ],
+            "Delivery":[
             {
-                "Item":"Hamburguer Vegan-Terror",
-                "Ingredients":"Bread,Tomatoes,vegan cheese,Burger From Soy,Vegan Barbecue",
-                "Prices":"$12:00",
-                "Preparation_Time":"00:30"
+                "Restaurant":"Mark Foods",
+                "Type":"Hamburguer",
+                "Location":"Street Ri Dark",
+                "Number":"321",
+                "Menu":[
+                    {
+                        "Item":"Hamburguer Vegan-Terror",
+                        "Ingredients":"Bread,Tomatoes,vegan cheese,Burger From Soy,Vegan Barbecue",
+                        "Prices":"$12:00",
+                        "Preparation_Time":"00:30"
+                    },
+                    {
+                        "Item":"Hotdog Terror-Chucky",
+                        "Ingredients":"Bread Tostade,hamburger underdone,himalayan ketchup,cheease cheadar",
+                        "Prices":"$12:00",
+                        "Preparation_Time":"00:45"
+                    },
+                    {
+                        "Item":"Burguer Terror-Jason",
+                        "Ingredients":"Bread Tostade and temperate in chili,hamburger underdone,himalayan ketchup, mayonnaise temperate,cheease cheadar,tomatoes",
+                        "Prices":"$15:00",
+                        "Preparation_Time":"00:45"
+                    }   
+                ]
             },
             {
-                "Item":"Hotdog Terror-Chucky",
-                "Ingredients":"Bread Tostade,hamburger underdone,himalayan ketchup,cheease cheadar",
-                "Prices":"$12:00",
-                "Preparation_Time":"00:45"
-            },
-            {
-                "Item":"Burguer Terror-Jason",
-                "Ingredients":"Bread Tostade and temperate in chili,hamburger underdone,himalayan ketchup, mayonnaise temperate,cheease cheadar,tomatoes",
-                "Prices":"$15:00",
-                "Preparation_Time":"00:45"
-            }   
-        ]
-    },
-    {
-        "Restaurant":"Hoot Foods",
-        "Type":"Pizza",
-        "Location":"Street Darkness",
-        "Number":"683",
-        "Menu":[
-            {
-                "Item":"Pizza Iron-cheader",
-                "Ingredients":"Chesse Sauce, mozzarella, bacon, sliced ​​tomatoes, catupiry and oregano ",
-                "Prices":"$10:00",
-                "Preparation_Time":"00:25"
-            },
-            {
-                "Item":"Pizza Capitain-Pepperoni",
-                "Ingredients":"Sauce, mozzarella, spicy pepperoni, eggplant, sliced ​​onion and oregano",
-                "Prices":"$12:00",
-                "Preparation_Time":"00:30"
-            },
-            {
-                "Item":"Pizza Spider-Portuguese",
-                "Ingredients":"Sauce, mozzarella, ham, calabresa, eggs, onion, olives and oregano.",
-                "Prices":"$15:00",
-                "Preparation_Time":"00:45"
+                "Restaurant":"Hoot Foods",
+                "Type":"Pizza",
+                "Location":"Street Darkness",
+                "Number":"683",
+                "Menu":[
+                    {
+                        "Item":"Pizza Iron-cheader",
+                        "Ingredients":"Chesse Sauce, mozzarella, bacon, sliced ​​tomatoes, catupiry and oregano ",
+                        "Prices":"$10:00",
+                        "Preparation_Time":"00:25"
+                    },
+                    {
+                        "Item":"Pizza Capitain-Pepperoni",
+                        "Ingredients":"Sauce, mozzarella, spicy pepperoni, eggplant, sliced ​​onion and oregano",
+                        "Prices":"$12:00",
+                        "Preparation_Time":"00:30"
+                    },
+                    {
+                        "Item":"Pizza Spider-Portuguese",
+                        "Ingredients":"Sauce, mozzarella, ham, calabresa, eggs, onion, olives and oregano.",
+                        "Prices":"$15:00",
+                        "Preparation_Time":"00:45"
+                    }
+                ]    
             }
-        ]    
+        ]
     }
-
 ]
+}]
