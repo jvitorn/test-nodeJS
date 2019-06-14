@@ -4,6 +4,7 @@ const express = require('express');
 const app  = express();
 const port = 3000;
 const path = require('path');
+const bodyParser = require('body-parser');
 
 //add folders
   app.use('/routes',express.static(__dirname + '/routes'));
@@ -17,26 +18,23 @@ const path = require('path');
   app.use('/',express.static(path.join(__dirname,"public")));
 //encode
 app.use(express.urlencoded());
-
-//Get informations from Register
-app.post('/sigup',function(req,res){
- 
-});
 //Get informations from delivery.json 
-app.get('/delivery',function(req,res){
+app.get('/delivery',function(res){
   //call filesistem for write json
   const fs = require('fs');
   //save in var
   const jsonDelivery = fs.readFileSync('./delivery.json','utf-8');
   //return
-  return res.send(jsonDelivery);
+  res.send(jsonDelivery);
 });
 //Get informations from login
-app.post('/reguests',function(req,res){
+app.post('/teste',function(req,res){
   var email = req.body.email;
   var password = req.body.password;
   var name = req.body.name;
   res.send('Your Name is ' + name + ' Your Email is ' + email + ' Your Password ' + password);
+  console.log(req.body);
+  res.end();
 });
 
 //server
