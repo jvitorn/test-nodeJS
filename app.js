@@ -5,7 +5,18 @@ const app  = express();
 const port = 3000;
 const path = require('path');
 const bodyParser = require('body-parser');
-
+const mysql = require('mysql');
+const con = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "usbw",
+    database :"Delivery"
+  });
+  //conection from database
+  con.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
+  });
 //add folders
   app.use('/routes',express.static(__dirname + '/routes'));
   app.use('/stylesheets',express.static(__dirname + '/public/stylesheets'));
@@ -28,16 +39,22 @@ app.get('/delivery',function(res){
   res.send(jsonDelivery);
 });
 //Get informations from login
-app.post('/teste',function(req,res){
+app.post('/test',function(req,res){
   var email = req.body.email;
   var password = req.body.password;
   var name = req.body.name;
   res.send('Your Name is ' + name + ' Your Email is ' + email + ' Your Password ' + password);
+  //insert to database informations from login
+    var sql = 'INSERT INTO tb_users (nm_user,ds_password,nm_email,nm_address,nm_city,nr_number,ds_picture) VALUES ("'+name+'","'+password+'","'+email+'",null," ",null,null)';
+      con.query(sql, function (err, result) {
+        if (err) throw err;
+        console.log("1 record inserted");
+      });
   console.log(req.body);
   res.end();
 });
 
 //server
 app.listen(port,function(){
-  console.log('Server is running at localhost:'+ port);
+  console.log('Server is running at http://localhost:'+ port);
 });

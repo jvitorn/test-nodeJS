@@ -4,6 +4,7 @@ use Delivery;
 create table tb_users (
     cd_user int(11) not null auto_increment,
     nm_user varchar(50) not null,
+    nm_email varchar(50) not null,
     ds_password varchar(50) not null,
     nm_address varchar(50),
     nm_city  varchar(50) not null,
