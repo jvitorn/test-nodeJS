@@ -1,3 +1,5 @@
+create database Delivery;
+use Delivery;
 /* estruct for table users*/
 create table tb_users (
     cd_user int(11) not null auto_increment,
@@ -13,7 +15,7 @@ create table tb_users (
 /*estruct for table restaurants*/
 create table tb_restaurants (
     cd_restaurant int(11) not null auto_increment,
-    id_menu       varchar(50) not null,
+    id_menu       int(11) not null,
     nm_restaurant varchar(50) not null,
     nm_location   varchar(50) not null,
     nm_city       varchar(50) not null,
@@ -32,21 +34,19 @@ create table tb_menu(
 /*estruct for user_delivery*/
 create table tb_item_delivery(
     cd_purchase int(15) not null auto_increment,
-    id_delivery varchar(50) not null,
-    id_itemdelivery varchar(50) not null,
+    id_delivery int(11) not null,
+    id_itemdelivery int(11) not null,
     ds_special longtext not null,
     vl_unitary decimal(10,2) not null,
     qt_product int(11) not null,
     vt_total  decimal(10,2) not null,
-    primary key (cd_purchase),
-    key id_itemdelivery (id_itemdelivery),
-    key id_delivery (id_delivery)
+    primary key (cd_purchase)
 );
 /*estruct for table item*/ 
 create table tb_item(
     cd_item int(11) not null auto_increment,
     nm_item varchar(50) not null,
-    id_menu varchar(50) not null,
+    id_menu int(11) not null,
     ds_ingredients varchar(150) not null,
     primary key (cd_item),
     key id_menu (id_menu)
@@ -54,13 +54,13 @@ create table tb_item(
 /*estruct for table delivery*/
 create table tb_delivery(
     cd_delivery int(11) not null auto_increment,
-    id_user varchar(50) not null,
-    id_restaurant varchar(50) not null,
+    id_user int(11) not null,
+    id_restaurant int(11) not null,
     hr_demand time not null,
     hr_preparation_request time not null,
     hr_delivery time not null,
     ic_status varchar(50) not null,
-    id_payment_form varchar(30) not null,
+    id_payment_form int(11) not null,
     primary key (cd_delivery),
     key id_user (id_user),
     key id_restaurant (id_restaurant),
@@ -80,10 +80,10 @@ alter table tb_item
     add constraint tb_item foreign key (id_menu) references tb_menu(cd_menu);
 -- alter table for user_delivery
 alter table tb_item_delivery
-    add constraint tb_user_delivery foreign key (id_itemdelivery) references tb_item(cd_item),
-    add constraint tb_user_delivery foreign key (id_delivery) references tb_delivery(cd_delivery);
+    add constraint tb_item_delivery1 foreign key (id_itemdelivery) references tb_item(cd_item),
+    add constraint tb_item_delivery2 foreign key (id_delivery) references tb_delivery(cd_delivery);
 -- alter table for delivery
 alter table tb_delivery
-    add constraint tb_delivery foreign key (id_user) references tb_users(cd_user),
-    add constraint tb_delivery foreign key (id_restaurant) references tb_restaurants(cd_restaurant),
-    add constraint tb_delivery foreign key (id_payment_form) references tb_payment(cd_payment);
+    add constraint tb_delivery1 foreign key (id_user) references tb_users(cd_user),
+    add constraint tb_delivery2 foreign key (id_restaurant) references tb_restaurants(cd_restaurant),
+    add constraint tb_delivery3 foreign key (id_payment_form) references tb_payment(cd_payment);
