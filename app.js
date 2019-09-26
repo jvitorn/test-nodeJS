@@ -12,6 +12,19 @@ const con = mysql.createConnection({
     password: "usbw",
     database :"Delivery"
   });
+var sql ='';
+var redirect='';
+//functions to database 
+function Register (con,sql,email,password,name){  
+  con.query(sql, function (err, result) {
+        //error
+        if (err) throw err;
+        //result
+        if(result.affectedRows == 1){
+          console.log("1 record inserted");
+        }
+    });
+  };
   //conection from database
   con.connect(function(err) {
     if (err) throw err;
@@ -39,18 +52,20 @@ app.get('/delivery',function(res){
   res.send(jsonDelivery);
 });
 //Get informations from login
-app.post('/test',function(req,res){
+app.post('/register_user',function(req,res){
+  //catch informations from register
   var email = req.body.email;
   var password = req.body.password;
   var name = req.body.name;
-  res.send('Your Name is ' + name + ' Your Email is ' + email + ' Your Password ' + password);
   //insert to database informations from login
-    var sql = 'INSERT INTO tb_users (nm_user,ds_password,nm_email,nm_address,nm_city,nr_number,ds_picture) VALUES ("'+name+'","'+password+'","'+email+'",null," ",null,null)';
-      con.query(sql, function (err, result) {
-        if (err) throw err;
-        console.log("1 record inserted");
-      });
-  console.log(req.body);
+  sql += 'INSERT INTO tb_users (nm_user,ds_password,nm_email,nm_address,nm_city,nr_number,ds_picture) VALUES ("'+name+'","'+password+'","'+email+'",null," ",null,null)';
+  //insert rote to redirect page
+  redirect+='/login';
+  //function from insert informations from database
+  Register(con,sql,email,password,name);
+  res.send('successfully registered user');
+  //redirect page 
+  res.redirect(redirect);
   res.end();
 });
 

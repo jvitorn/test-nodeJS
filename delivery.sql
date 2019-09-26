@@ -11,7 +11,7 @@ create table tb_users (
     nr_number int(10),
     ds_picture varchar(80),
     primary key (cd_user),
-    unique key  nm_user (nm_user)
+    unique key  nm_email (nm_email)
 );
 /*estruct for table restaurants*/
 create table tb_restaurants (
