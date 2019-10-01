@@ -16,7 +16,7 @@
 <script>
     var app = angular.module('testModule',[]);
     app.controller('testController',function($scope,$http){
-        $http.get('/file.json').then(function(response){
+        $http.get('http://localhost:3000/teste').then(function(response){
             $scope.delivery = response.data;
             console.log($scope.delivery);
             // $scope.delivery = response.data;
