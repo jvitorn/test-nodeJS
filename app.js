@@ -63,22 +63,17 @@ app.post('/sigin',function(req,res){
   //catch informations from Login
   var email = req.body.email;
   var password = req.body.password;
-  var name = req.body.name;
   //insert to database informations from login
   sql = 'SELECT * FROM tb_users WHERE nm_email = "'+email+'" AND ds_password ="'+password+'";';
-  //insert rote to redirect page
-  redirect ='/painel';
   //function from insert informations from database
-  database.register(con,sql,email,password,name,res);
+  database.login(con,sql,res);
   console.log(req.body);
-  res.end();
 });
 app.get('/teste',function(req,res){
   //insert to database informations from login
   sql = 'SELECT * FROM tb_users;';
   //function from insert informations from database
   database.execute(con,sql,res);
-  res.end();
 });
 
 //server

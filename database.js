@@ -7,7 +7,8 @@ module.exports ={
             }
             else{ 
                 res.send(results);
-                con.end();
+                console.log(results.length);
+                
             }
         });
     },
@@ -24,7 +25,7 @@ module.exports ={
                         res.send('<script>alert("successfully registered user!");window.location.href = "/login";</script>');
                         con.end();
                     }
-                    // error in insert
+                    // error in where
                     else{
                         console.log('nenhum registro');
                     }
@@ -39,9 +40,14 @@ module.exports ={
               }
               //sucess
               else{
-                    // new row
-                    res.send(results);
-                    con.end();
+                    // result user from database
+                    if(results.length == 1){
+                        res.send('<script>alert("successfully registered user!");window.location.href = "/painel";</script>');
+                        con.end();
+                    }
+                    else{
+                        res.send('algo de errado nao parece certo');
+                    }
                 }
         });
     }
