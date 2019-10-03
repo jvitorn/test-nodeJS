@@ -5,7 +5,6 @@ const app  = express();
 const port = 3000;
 const path = require('path');
 const mysql = require('mysql');
-const fs = require('fs');
 //require
 const database = require('./database.js');
 
@@ -17,7 +16,6 @@ const con = mysql.createConnection({
     database :"Delivery"
   });
 var sql ='';
-var redirect='';
 //functions to database 
 
   //conection from database
@@ -37,16 +35,11 @@ var redirect='';
 //encode
 app.use(express.urlencoded());
 //Get informations from delivery.json 
-app.get('/delivery',function(res){
-  //call filesistem for write json
-  const fs = require('fs');
-  //save in var
-  const jsonDelivery = fs.readFileSync('./delivery.json','utf-8');
-  //return
-  res.send(jsonDelivery);
+app.get('/delivery',(email,res) => {
+  res.send(email);
 });
 //Get informations from Register
-app.post('/register_user',function(req,res){
+app.post('/register_user',(req,res) => {
   //catch informations from register
   var email = req.body.email;
   var password = req.body.password;
@@ -55,25 +48,25 @@ app.post('/register_user',function(req,res){
   sql = 'INSERT INTO tb_users (nm_user,ds_password,nm_email,nm_address,nm_city,nr_number,ds_picture) VALUES ("'+name+'","'+password+'","'+email+'",null," ",null,null);';
   //function from insert informations from database
   database.register(con,sql,res);
-  console.log(req.body);
-  console.log(sql);
 });
 //Get informations From Register
-app.post('/sigin',function(req,res){
+app.post('/sigin',(req,res) => {
   //catch informations from Login
   var email = req.body.email;
   var password = req.body.password;
   //insert to database informations from login
   sql = 'SELECT * FROM tb_users WHERE nm_email = "'+email+'" AND ds_password ="'+password+'";';
+
   //function from insert informations from database
   database.login(con,sql,res);
   console.log(req.body);
 });
-app.get('/teste',function(req,res){
+app.get('/return',(email,password,req,res) => {
+  sql = 'SELECT * FROM tb_users WHERE nm_email = "'+email+'" AND ds_password ="'+password+'";';
   //insert to database informations from login
-  sql = 'SELECT * FROM tb_users;';
   //function from insert informations from database
   database.execute(con,sql,res);
+  console.log(req.body);
 });
 
 //server

@@ -27,7 +27,7 @@ module.exports ={
                     }
                     // error in where
                     else{
-                        console.log('nenhum registro');
+                        console.log('no record');
                     }
                 }
         });
@@ -43,10 +43,9 @@ module.exports ={
                     // result user from database
                     if(results.length == 1){
                         res.send('<script>alert("successfully registered user!");window.location.href = "/painel";</script>');
-                        con.end();
                     }
                     else{
-                        res.send('algo de errado nao parece certo');
+                        res.send('something wrong doesn´t seem right');
                     }
                 }
         });
