@@ -7,7 +7,6 @@ module.exports ={
             }
             else{ 
                 res.send(results);
-                console.log(results.length);
                 
             }
         });
@@ -23,7 +22,6 @@ module.exports ={
                     // new row
                     if(results.affectedRows == 1 ){
                         res.send('<script>alert("successfully registered user!");window.location.href = "/login";</script>');
-                        con.end();
                     }
                     // error in where
                     else{

@@ -10,13 +10,13 @@
 </head>
 <body ng-app="testModule">
     <div class="teste" ng-controller="testController">            
-            
+            <li>{{delivery[0].nm_user}}</li>
     </div>
 </body>
 <script>
     var app = angular.module('testModule',[]);
     app.controller('testController',function($scope,$http){
-        $http.get('http://localhost:3000/teste').then(function(response){
+        $http.get('/user_info').then(function(response){
             $scope.delivery = response.data;
             console.log($scope.delivery);
             // $scope.delivery = response.data;

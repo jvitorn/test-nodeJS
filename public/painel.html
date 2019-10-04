@@ -7,7 +7,8 @@
     <title>Painel</title>
     <!-- Style -->
     <link rel="stylesheet" href="/stylesheets/style.css">
-    
+    <!--angularjs-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -15,9 +16,9 @@
     <script src="https://kit.fontawesome.com/3732f07a5a.js"></script>
   </head>
   <body>
-    <div class="container-fluid">
+    <div class="container-fluid" ng-app="testModule">
       <!-- Painel User -->
-      <div class="Section Painel">
+      <div class="Section Painel" ng-controller="testController">
           <div class="row">
             <div class="col-md-3">
               <!--Navbar User  -->
@@ -44,7 +45,7 @@
                                         <div class="row">
                                             <!-- Name User -->
                                             <div class="col-md-12">
-                                              <h5>User</h5>
+                                              <h5>{{delivery[0].nm_user}}</h5>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -204,4 +205,20 @@
       </div>
     </div>
   </body>
+  <script>
+    var app = angular.module('testModule',[]);
+    app.controller('testController',function($scope,$http){
+        $http.get('/user_info').then(function(response){
+            $scope.delivery = response.data;
+            console.log($scope.delivery);
+            // $scope.delivery = response.data;
+            // $scope.test = response.data[0]["Menu"];
+            //     //foreach for menu array
+            //     angular.forEach($scope.delivery,function(key,value){
+            //         $scope.food = key["Menu"];
+            //     });
+        });
+        
+    });
+</script>
 </html>

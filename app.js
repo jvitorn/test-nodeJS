@@ -16,6 +16,8 @@ const con = mysql.createConnection({
     database :"Delivery"
   });
 var sql ='';
+var email = '';
+var password = '';
 //functions to database 
 
   //conection from database
@@ -35,7 +37,7 @@ var sql ='';
 //encode
 app.use(express.urlencoded());
 //Get informations from delivery.json 
-app.get('/delivery',(email,res) => {
+app.get('/delivery',(res) => {
   res.send(email);
 });
 //Get informations from Register
@@ -52,21 +54,22 @@ app.post('/register_user',(req,res) => {
 //Get informations From Register
 app.post('/sigin',(req,res) => {
   //catch informations from Login
-  var email = req.body.email;
-  var password = req.body.password;
+  email = req.body.email;
+  password = req.body.password;
   //insert to database informations from login
   sql = 'SELECT * FROM tb_users WHERE nm_email = "'+email+'" AND ds_password ="'+password+'";';
 
   //function from insert informations from database
   database.login(con,sql,res);
   console.log(req.body);
+  return email,password;
 });
-app.get('/return',(email,password,req,res) => {
+//Get informations From aaaaa
+app.get('/user_info',(req,res) => {
   sql = 'SELECT * FROM tb_users WHERE nm_email = "'+email+'" AND ds_password ="'+password+'";';
   //insert to database informations from login
   //function from insert informations from database
   database.execute(con,sql,res);
-  console.log(req.body);
 });
 
 //server
