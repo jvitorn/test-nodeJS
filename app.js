@@ -5,14 +5,14 @@ const app  = express();
 const port = 3000;
 const path = require('path');
 const mysql = require('mysql');
-//require
+//require database
 const database = require('./database.js');
-
+// database conection 
 const con = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "usbw",
-    port: 3307,
+    port: 3306,
     database :"Delivery"
   });
 var sql ='';
@@ -27,6 +27,7 @@ var password = '';
   });
 //add folders
   app.use('/stylesheets',express.static(__dirname + '/public/stylesheets'));
+  app.use('/restaurants',express.static(__dirname + '/public/restaurants.html'));
   app.use('/register',express.static(__dirname + '/public/register.html'));
   app.use('/painel',express.static(__dirname + '/public/painel.html'));
   app.use('/login',express.static(__dirname + '/public/login.html'));

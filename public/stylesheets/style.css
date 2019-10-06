@@ -34,4 +34,15 @@ img .user{
     overflow: hidden;
     background-color: #e0e0e0;
 }
-  
+/* restaurants */
+.carrousel-restaurants{
+    width: 150px;
+}
+.section-recently-opened img{
+    width:160px;
+    height:150px;
+}
+.section-top-categories .categories{
+    width: 350px;
+    height: 300px;
+}
