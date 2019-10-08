@@ -38,7 +38,8 @@ img .user{
 .carrousel-restaurants{
     width: 150px;
 }.carrousel-restaurants .image{
-  background-repeat: no-repeat;
+    
+    
 }
 .section-recently-opened img{
     width:160px;
@@ -52,6 +53,7 @@ img .user{
     background-size:115%!important;
     
 }
+
 .section-top-categories .categories:hover{
     object-fit: contain;
     -webkit-transition: width 0.25s; /* For Safari 3.1 to 6.0 */
