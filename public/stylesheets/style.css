@@ -37,12 +37,27 @@ img .user{
 /* restaurants */
 .carrousel-restaurants{
     width: 150px;
+}.carrousel-restaurants .image{
+  background-repeat: no-repeat;
 }
 .section-recently-opened img{
     width:160px;
     height:150px;
 }
 .section-top-categories .categories{
+    object-fit: contain;
+    transition: width 0.25s,height 0.25s,background-size 0.5s;
     width: 350px;
     height: 300px;
+    background-size:115%!important;
+    
+}
+.section-top-categories .categories:hover{
+    object-fit: contain;
+    -webkit-transition: width 0.25s; /* For Safari 3.1 to 6.0 */
+    transition: width 0.25s,height 0.25s,background-size 0.5s;
+    background-size:110%!important;
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+    
 }
