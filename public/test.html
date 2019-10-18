@@ -19,12 +19,7 @@
         $http.get('/user_info').then(function(response){
             $scope.delivery = response.data;
             console.log($scope.delivery);
-            // $scope.delivery = response.data;
-            // $scope.test = response.data[0]["Menu"];
-            //     //foreach for menu array
-            //     angular.forEach($scope.delivery,function(key,value){
-            //         $scope.food = key["Menu"];
-            //     });
+          
         });
         
     });

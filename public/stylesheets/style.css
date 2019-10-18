@@ -68,3 +68,13 @@ img .user{
     width: 500px;
     background-image: url("https://media.gq-magazine.co.uk/photos/5d13a96b7fcc8e403c821131/16:9/w_1920,c_limit/02-gq-19mar19_b.jpg");
 }
+/* adm */
+.section-content-adm-nav-options{
+    width: 50px;
+}
+.icon-navbar{
+    font-size:1.5rem;
+}
+.section-content-adm-cards .cards{
+    width: 250px !important;
+}
