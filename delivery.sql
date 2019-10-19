@@ -10,6 +10,7 @@ create table tb_users (
     nm_city  varchar(50) not null,
     nr_number int(10),
     ds_picture varchar(80),
+    ds_level char(2),
     primary key (cd_user),
     unique key  nm_email (nm_email)
 );
@@ -22,6 +23,7 @@ create table tb_restaurants (
     nm_city       varchar(50) not null,
     nr_number     int(10) not null,
     nm_type       varchar(45) not null,
+    ds_level char(2),
     primary key (cd_restaurant),
     unique key nm_restaurant (nm_restaurant)
 );
