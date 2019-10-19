@@ -1,10 +1,10 @@
 //consts
-const http  = require('http');
 const express = require('express');
 const app  = express();
 const port = 3000;
 const path = require('path');
 const mysql = require('mysql');
+const server = require('http').createServer(app);
 //require database
 const database = require('./database.js');
 // database conection 
@@ -25,18 +25,27 @@ var password = '';
     if (err) throw err;
     console.log("Database Connected!");
   });
-//add folders
-  app.use('/stylesheets',express.static(__dirname + '/public/stylesheets'));
-  app.use('/restaurants',express.static(__dirname + '/public/restaurants.html'));
-  app.use('/register',express.static(__dirname + '/public/register.html'));
-  app.use('/painel',express.static(__dirname + '/public/painel.html'));
-  app.use('/login',express.static(__dirname + '/public/login.html'));
-  app.use('/test',express.static(__dirname + '/public/test.html'));
-  app.use('/views',express.static(__dirname + '/views'));
-  //folders statics absoluties 
-  app.use('/',express.static(path.join(__dirname,"/public")));
+
+//folders statics absoluties 
+app.use(express.static(path.join(__dirname,'public')));
+// views
+app.set('views',path.join(__dirname,'public'));
+app.engine('html', require('ejs').renderFile);
+app.set('view engine','html');
 //encode
 app.use(express.urlencoded());
+
+//add folders
+app.use('/stylesheets',express.static(__dirname + '/public/stylesheets'));
+app.use('/restaurants',express.static(__dirname + '/public/restaurants.html'));
+app.use('/register',express.static(__dirname + '/public/register.html'));
+app.use('/painel',express.static(__dirname + '/public/painel.html'));
+app.use('/login',express.static(__dirname + '/public/login.html'));
+app.use('/test',express.static(__dirname + '/public/test.html'));
+
+app.use('/adm',(req,res)=>{
+    res.render('adm/adm.html');
+});
 //Get informations from delivery.json 
 app.get('/delivery',(res) => {
   res.send(email);
@@ -48,7 +57,7 @@ app.post('/register_user',(req,res) => {
   var password = req.body.password;
   var name = req.body.name;
   //insert to database informations from login
-  sql = 'INSERT INTO tb_users (nm_user,ds_password,nm_email,nm_address,nm_city,nr_number,ds_picture) VALUES ("'+name+'","'+password+'","'+email+'",null," ",null,null);';
+  sql = 'INSERT INTO tb_users (nm_user,ds_password,nm_email,nm_address,nm_city,nr_number,ds_picture,ds_level) VALUES ("'+name+'","'+password+'","'+email+'",null," ",null,null,1);';
   //function from insert informations from database
   database.register(con,sql,res);
 });
