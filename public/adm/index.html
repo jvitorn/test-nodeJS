@@ -23,7 +23,7 @@
     <!--angularjs-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
-<body>
+<body ng-app="admModule">
     <div class="container-fluid">
         <div class="row">
             <!-- section content-painel-adm -->
@@ -228,7 +228,7 @@
                             <div class="col-md-12 section-content-adm-cards mt-5 mb-3">
                                 <div class="row">
                                     <!-- Card User -->
-                                    <div class="col-md-2 offset-md-1 p-3 mr-3 adm-cards-users cards shadow">
+                                    <div class="col-md-2 offset-md-1 p-3 mr-3 adm-cards-users cards shadow" ng-controller="countUsersController">
                                         <div class="row">
                                             <div class="col-md-12 adm-cards-icon text-center mb-2">
                                                 <i class="fas fa-user border p-3 rounded-circle "></i>
@@ -236,12 +236,12 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12 text-group text-center">
-                                                <h6 class="h6">999 <br>Total Users</h6>
+                                                <h6 class="h6">{{countUsers[0].countUsers}} <br>Total Users</h6>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- Card Restaurant -->
-                                    <div class="col-md-2 p-3 mr-3 adm-cards-restaurants cards shadow">
+                                    <div class="col-md-2 p-3 mr-3 adm-cards-restaurants cards shadow" ng-controller="countRestaurantsController">
                                         <div class="row">
                                             <div class="col-md-12 adm-cards-icon text-center mb-2">
                                                 <i class="fas fa-utensils border p-3 rounded-circle "></i>
@@ -249,12 +249,12 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12 text-group text-center">
-                                                <h6 class="h6">999 <br>Total Restaurants</h6>
+                                                <h6 class="h6">{{countRestaurants[0].countRestaurants}} <br>Total Restaurants</h6>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- Card Delivery -->
-                                    <div class="col-md-2 p-3 mr-3 adm-cards-delivery cards shadow">
+                                    <div class="col-md-2 p-3 mr-3 adm-cards-delivery cards shadow" ng-controller="countDeliveryController">
                                         <div class="row">
                                             <div class="col-md-12 adm-cards-icon text-center mb-2">
                                                 <i class="fas fa-truck border p-3 rounded-circle "></i>
@@ -262,7 +262,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12 text-group text-center">
-                                                <h6 class="h6">999 <br>Total Delivery</h6>
+                                                <h6 class="h6">{{countDelivery[0].countDelivery}}<br>Total Delivery</h6>
                                             </div>
                                         </div>
                                     </div>
@@ -491,20 +491,16 @@
             </div>
     </div>
     <script>
+        var app = angular.module('admModule',[]);
         function rimel(i){
-            
             var v = i.value;
-            
             if(isNaN(v[v.length-1])){ // impede entrar outro caractere que não seja número
                 i.value = v.substring(0, v.length-1);
                 return;
             }
         }
-        $(document).ready(function () {
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-            });
-        });
+        
     </script>
+    <script src="controller/admController.js"></script>
 </body>
 </html>
