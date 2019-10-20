@@ -4,7 +4,9 @@ const app  = express();
 const port = 3000;
 const path = require('path');
 const mysql = require('mysql');
-const server = require('http').createServer(app);
+const server = require('http').createServer(app); 
+
+
 //require database
 const database = require('./database.js');
 // database conection 
@@ -42,10 +44,22 @@ app.use('/register',express.static(__dirname + '/public/register.html'));
 app.use('/painel',express.static(__dirname + '/public/painel.html'));
 app.use('/login',express.static(__dirname + '/public/login.html'));
 app.use('/test',express.static(__dirname + '/public/test.html'));
-
-app.use('/adm',(req,res)=>{
-    res.render('adm/adm.html');
-});
+//use requests from adm 
+  app.use('/adm',(req,res)=>{
+      res.render('adm/index.html');
+  });
+  app.get('/countUsers',(req,res)=>{
+      sql = "SELECT COUNT('cd_users') as countUsers FROM tb_users;";
+      database.execute(con,sql,res);
+  });
+  app.get('/countRestaurants',(req,res)=>{
+      sql = "SELECT COUNT('cd_restaurants') as countRestaurants FROM tb_restaurants;";
+      database.execute(con,sql,res);
+  });
+  app.get('/countDelivery',(req,res)=>{
+    sql = "SELECT COUNT('cd_delivery') as countDelivery FROM tb_delivery;";
+    database.execute(con,sql,res);
+  });
 //Get informations from delivery.json 
 app.get('/delivery',(res) => {
   res.send(email);

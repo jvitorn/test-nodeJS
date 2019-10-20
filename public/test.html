@@ -15,13 +15,14 @@
 </body>
 <script>
     var app = angular.module('testModule',[]);
-    app.controller('testController',function($scope,$http){
-        $http.get('/user_info').then(function(response){
-            $scope.delivery = response.data;
-            console.log($scope.delivery);
+    // app.controller('testController',function($scope,$http){
+    //     $http.get('/user_info').then(function(response){
+    //         $scope.delivery = response.data;
+    //         console.log($scope.delivery);
           
-        });
+    //     });
         
-    });
+    // });
 </script>
+<script src="testcontroller.js"></script>
 </html>
