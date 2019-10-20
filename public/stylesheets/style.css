@@ -81,3 +81,8 @@ img .user{
 .adm-cards-icon{
     font-size:1.5rem;
 }
+.section-navbar-adm-options .adm-cards-delivery:hover{
+    color:white;
+    background-color:#17a2b8!important;
+
+}
