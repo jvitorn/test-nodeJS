@@ -17,7 +17,11 @@
     <!-- Bootstrap JS And Jquery -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!-- Sweet Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <!--angularjs-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
 <body>
     <div class="container-fluid">
@@ -128,7 +132,7 @@
                                 <!-- painels lenght -->
                                 <div class="row">
                                     <!-- painel card restaurant -->
-                                    <div class="col-md-5 rounded">
+                                    <div class="col-md-5 rounded" >
                                         <div class="card painel-fast-registration-restaurant ">
                                             <div class="card-header bg-danger text-white">
                                                 <i class="fas fa-utensils"></i> Fast Registration Restaurant
@@ -137,7 +141,7 @@
                                                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis odio veniam dolore qui quia unde laudantium, quis assumenda ipsam iste explicabo quae tempore quas numquam asperiores magnam rem ea fugit?
                                             </div>
                                             <div class="card-footer">
-                                                <button class="btn btn-block btn-danger">Submit</button>
+                                                <button class="btn btn-block btn-danger" data-toggle="modal" data-target="#modalRegistrationRestaurant" aria-hidden="true">Submit</button>
                                             </div>
                                         </div>
                                     </div>
@@ -151,7 +155,7 @@
                                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur dicta aliquam dolor, iusto ipsa molestias excepturi sequi? Recusandae iusto itaque, porro blanditiis doloribus quia labore eligendi, consequuntur fugit facere beatae!
                                             </div>
                                             <div class="card-footer">
-                                                <button class="btn btn-block btn-warning">Submit</button>
+                                                <button class="btn btn-block btn-warning" data-toggle="modal" data-target="#modalRegistrationWhiteList" aria-hidden="true">Submit</button>
                                             </div>
                                         </div>
                                     </div>
@@ -239,5 +243,113 @@
             </div>
         </div>
     </div>
+    <!-- modals -->
+    <!-- Modal Registration Restaurant -->
+    <div class="modal fade" id="modalRegistrationRestaurant" tabindex="-1" role="dialog" aria-labelledby="registrationRestaurantModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title" id="registrationRestaurantModalLabel"><i class="fas fa-utensils"></i> Fast Registration From New Restaurants</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                           <label for="">Name :</label>
+                           <input type="text" name="name" id=""  placeholder="Insert Name from Restaurant" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Cnpj :</label>
+                            <input type="text" name="cnpj" oninput="rimel(this)" id="" maxlength="14" placeholder="Insert cnpj from Restaurant" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Select Categories:</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01">Options</label>
+                                </div>
+                                <select class="custom-select" id="inputGroupSelect01">
+                                    <option selected>Choose...</option>
+                                    <option value="1">Um</option>
+                                    <option value="2">Dois</option>
+                                    <option value="3">Três</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-outline-info">Registration</button>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="modal fade" id="modalRegistrationWhiteList" tabindex="-1" role="dialog" aria-labelledby="registrationWhiteListModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-warning text-white">
+                        <h5 class="modal-title" id="registrationWhiteListModalLabel"><i class="fas fa-list"></i> Fast Registration From White list</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="text" name="seachUser" id="seachUser" placeholder="Search from users" class="form-control">
+                        </div>
+                        <table class="table table-bordered">    
+                                <thead>
+                                    <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Primeiro</th>
+                                    <th scope="col">Último</th>
+                                    <th scope="col">Nickname</th>
+                                    <th scope="col">Ban</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                    <th scope="row">1</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                    <td><button class="btn btn-outline-info">Ban</button></td>
+                                    </tr>
+                                    <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                    <td><button class="btn btn-outline-info">Ban</button></td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-outline-info">Ban From White List</button>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <script>
+        function rimel(i){
+            
+            var v = i.value;
+            
+            if(isNaN(v[v.length-1])){ // impede entrar outro caractere que não seja número
+                i.value = v.substring(0, v.length-1);
+                return;
+            }
+        }
+   
+        // var app = angular.module('AdmApp',[]);
+        // app.controller('registrationRestaurantController',function($scope){
+        //     $scope.restaurantRegister = function(){
+                
+        //     }; 
+        // });
+    </script>
 </body>
 </html>
