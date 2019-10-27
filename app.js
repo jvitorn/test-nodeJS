@@ -60,6 +60,15 @@ app.use('/test',express.static(__dirname + '/public/test.html'));
     sql = "SELECT COUNT('cd_delivery') as countDelivery FROM tb_delivery;";
     database.execute(con,sql,res);
   });
+  app.post('/fastRegistrationRestaurant',(req,res)=>{
+    let nameRestaurant = req.body.name;
+    let cnpjRestaurant = req.body.cnpj;
+    let typeRestaurant = req.body.type;
+    sql = 'INSERT INTO tb_restaurants(nm_restaurant, nr_cnpj, nm_type,ds_level) VALUES ("'+nameRestaurant+'","'+cnpjRestaurant+'","'+typeRestaurant+'",1);';
+    console.log(req.body);
+    console.log(sql);
+    database.execute(con,sql,res);
+  });
 //Get informations from delivery.json 
 app.get('/delivery',(res) => {
   res.send(email);

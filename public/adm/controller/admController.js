@@ -1,3 +1,4 @@
+
 // request from /count Users route
 app.controller('countUsersController',function($scope,$http){
     $http.get('/countUsers').then(function(response){
@@ -19,4 +20,31 @@ app.controller('countDeliveryController',function($scope,$http){
         console.log($scope.countDelivery);
     });
 });
-// request from /count Views route
+// request http from modal registration restaurant
+app.controller('registrationRestaurantController',function($scope,$http){
+    var categories = '';
+    // registration categories from options restaurants
+    $scope.data = {
+        model: null,
+        // name from categories 
+        availableOptions : [
+            {name :'bistro restaurant' },
+            {name : 'fast food'}, 
+            {name :'food truck'},
+            {name :'buffet'},
+            {name :'pizzeria'},
+            {name :'steak house'},
+            {name :'Japanese food'}
+        ]
+    };
+    // function from catch option selected
+    $scope.catchRestaurantType = function(item){
+        categories = item;
+        console.log(categories);
+        // return option selected
+        return categories;
+        
+    };
+   
+    
+});

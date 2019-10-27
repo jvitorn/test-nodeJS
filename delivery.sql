@@ -20,6 +20,7 @@ create table tb_restaurants (
     id_menu       int(11) not null,
     nm_restaurant varchar(50) not null,
     nm_location   varchar(50) not null,
+    nr_cnpj       int(14) not null,
     nm_city       varchar(50) not null,
     nr_number     int(10) not null,
     nm_type       varchar(45) not null,

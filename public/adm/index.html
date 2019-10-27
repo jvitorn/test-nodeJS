@@ -402,43 +402,42 @@
     <!-- modals -->
     <!-- Modal Registration Restaurant -->
     <div class="modal fade" id="modalRegistrationRestaurant" tabindex="-1" role="dialog" aria-labelledby="registrationRestaurantModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header bg-danger text-white">
-                        <h5 class="modal-title" id="registrationRestaurantModalLabel"><i class="fas fa-utensils"></i> Fast Registration From New Restaurants</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                           <label for="">Name :</label>
-                           <input type="text" name="name" id=""  placeholder="Insert Name from Restaurant" class="form-control">
+            <div class="modal-dialog" role="document" ng-controller="registrationRestaurantController">
+                <form action="/fastRegistrationRestaurant" method="post">
+                    <div class="modal-content">
+                        <div class="modal-header bg-danger text-white">
+                            <h5 class="modal-title" id="registrationRestaurantModalLabel"><i class="fas fa-utensils"></i> Fast Registration From New Restaurants</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-                        <div class="form-group">
-                            <label for="">Cnpj :</label>
-                            <input type="text" name="cnpj" oninput="rimel(this)" id="" maxlength="14" placeholder="Insert cnpj from Restaurant" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Select Categories:</label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01">Options</label>
+                        <div class="modal-body">
+                            <div class="form-group">
+                            <label for="">Name :</label>
+                            <input type="text" name="name" id=""  placeholder="Insert Name from Restaurant" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Cnpj :</label>
+                                <input type="text" name="cnpj" oninput="rimel(this)" id="" maxlength="14" placeholder="Insert cnpj from Restaurant" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Select Categories:</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Options</label>
+                                    </div>
+                                    <select class="custom-select" id="inputGroupSelect01" name="type" ng-model="data.model" ng-change="catchRestaurantType(data.model)"  >       
+                                        <option ng-repeat="option in data.availableOptions"   value="{{option.name}}">{{option.name}}</option>
+                                    </select>
                                 </div>
-                                <select class="custom-select" id="inputGroupSelect01">
-                                    <option selected>Choose...</option>
-                                    <option value="1">Um</option>
-                                    <option value="2">Dois</option>
-                                    <option value="3">Três</option>
-                                </select>
                             </div>
                         </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <input type="submit" class="btn  btn-outline-info" placeholder="Register">
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-outline-info">Registration</button>
-                    </div>
-                </div>
+                </form>
             </div>
     </div>
     <!-- modal registration White List -->
@@ -499,7 +498,6 @@
                 return;
             }
         }
-        
     </script>
     <script src="controller/admController.js"></script>
 </body>
