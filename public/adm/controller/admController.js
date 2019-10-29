@@ -21,8 +21,9 @@ app.controller('countDeliveryController',function($scope,$http){
     });
 });
 // request http from modal registration restaurant
-app.controller('registrationRestaurantController',function($scope,$http){
-    var categories = '';
+app.controller('registrationRestaurantController',function($scope){
+    //vars
+    let categories = '';
     // registration categories from options restaurants
     $scope.data = {
         model: null,
@@ -45,6 +46,6 @@ app.controller('registrationRestaurantController',function($scope,$http){
         return categories;
         
     };
-   
+    
     
 });

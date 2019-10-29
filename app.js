@@ -67,7 +67,7 @@ app.use('/test',express.static(__dirname + '/public/test.html'));
     sql = 'INSERT INTO tb_restaurants(nm_restaurant, nr_cnpj, nm_type,ds_level) VALUES ("'+nameRestaurant+'","'+cnpjRestaurant+'","'+typeRestaurant+'",1);';
     console.log(req.body);
     console.log(sql);
-    database.execute(con,sql,res);
+    database.fastRegistrationRestaurant(con,sql,res);
   });
 //Get informations from delivery.json 
 app.get('/delivery',(res) => {

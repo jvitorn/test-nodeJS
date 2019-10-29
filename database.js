@@ -10,6 +10,24 @@ module.exports ={
             }
         });
     },
+    fastRegistrationRestaurant : function(con,sql,res){
+        con.query(sql, function (error, results) {
+            //error
+            if (error){
+                res.send(error);
+            }
+            else{ 
+                //new row 
+                if(results.affectedRows == 1 ){
+                    res.send('<script>alert("successfully registered restaurant!");window.location.href = "/adm";</script>');
+                }
+                else{
+                    console.log('no record');
+                }
+                
+            }
+        });
+    },
     register : function(con,sql,res){  
         con.query(sql, function (error, results) {
               //error
