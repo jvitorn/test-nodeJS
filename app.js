@@ -20,6 +20,7 @@ const con = mysql.createConnection({
 var sql ='';
 var email = '';
 var password = '';
+var chosenRestaurant = ' ';
 //functions to database 
 
   //conection from database
@@ -104,7 +105,22 @@ app.get('/user_info',(req,res) => {
   //function from insert informations from database
   database.execute(con,sql,res);
 });
+// Views last three records in restaurants
+app.get('/RecentlyOpened',(req,res)=>{
+  sql = "SELECT cd_restaurant AS 'CODE' , nm_restaurant AS 'RESTAURANT', nm_location AS 'LOCATION', nm_type AS 'TYPE' from tb_restaurants WHERE ds_level = 1 ORDER BY cd_restaurant DESC LIMIT 4"; 
+  database.execute(con,sql,res);
+});
+app.post('/ChosenRestaurant',(res)=>{
+  chosenRestaurant = res.body.restaurant;
+  console.log(chosenRestaurant);
+  return chosenRestaurant;
+});
+app.get('/restaurant_info', function(req, res) {
+  sql = 'SELECT * FROM tb_restaurants WHERE ds_level = 1 and cd_restaurant ='+chosenRestaurant;
+  database.execute(con,sql,res);
+});
 
+//s
 //server
 app.listen(port,function(){
   console.log('Server is running at http://localhost:'+ port);

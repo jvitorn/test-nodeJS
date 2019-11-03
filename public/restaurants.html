@@ -15,12 +15,13 @@
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/3732f07a5a.js"></script>
     <!-- Bootstrap JS And Jquery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"  crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+    <!--angularjs-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
-<body>
+<body ng-app="restaurantModule">
     <div class="container-fluid  text-dark">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark index">
@@ -118,7 +119,7 @@
             </div>
         </div>
         <!-- Section Recently -->
-        <div class="jumbotron row">
+        <div class="jumbotron row" ng-controller="recentlyOpenedController">
             <div class="col-12 section-recently-opened mb-5 mt-3">
                 <div class="row">
                     <div class="col-12">
@@ -129,30 +130,15 @@
                     </div>
                     <div class="col-md-8 offset-md-2 text-center">
                         <div class="row">
-                            <div class="col-md-3">
-                                <img src="https://blog.santamassa.com.br/wp-content/uploads/2018/10/247730-top-8-melhores-tipos-de-carne-para-churrasco-940x640.jpg" alt="" class="rounded-circle img-thumbnail img-fluid border-danger">
-                                <h5 class="h5 mt-2 text-danger">Title from Restaurant</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                <button class="btn btn-outline-danger btn-block">See more...</button>
-                            </div>
-                            <div class="col-md-3">
-                                <img src="https://www.meubarato.com/image/d2lkdGg9NjYwJmZvcmNlPTEmcT05OCZzcmM9aW1nL29mZXJ0YXMvb2ZlcnRhXzIzODAuanBnJnNlY3VyZT17YnVybn0=.jpg" alt="" class="rounded-circle img-thumbnail img-fluid border-danger">
-                                <h5 class="h5 mt-2 text-danger">Title from Restaurant</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                <button class="btn btn-outline-danger btn-block">See more...</button>
-                            </div>
-                            <div class="col-md-3">
-                                <img src="https://go.hurb.com/wp-content/uploads/2017/11/Comida-Mineira.jpg" alt="" class="rounded-circle img-thumbnail img-fluid border-danger">
-                                <h5 class="h5 mt-2 text-danger">Title from Restaurant</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                <button class="btn btn-outline-danger btn-block">See more...</button>
-                            </div>
-                            <div class="col-md-3">
-                                <img src="https://www.comerciosnobairro.com.br/anunciante/img/img_produtos/20170914011451_9414a8f5b810972c3c9a0e2860c07532_1375995380_img_ofertas_premium.jpg" alt="" class="rounded-circle img-thumbnail img-fluid border-danger">
-                                <h5 class="h5 mt-2 text-danger">Title from Restaurant</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                <button class="btn btn-outline-danger btn-block">See more...</button>
-                            </div>
+                            
+                                <div class="col-md-3" ng-repeat="openedRestaurants in recentlyOpened " >
+                                    <img src="https://blog.santamassa.com.br/wp-content/uploads/2018/10/247730-top-8-melhores-tipos-de-carne-para-churrasco-940x640.jpg" alt="" class="rounded-circle img-thumbnail img-fluid border-danger">
+                                    <h5 class="h5 mt-2 text-danger">{{openedRestaurants.RESTAURANT}}</h5>
+                                    <p><b>{{openedRestaurants.TYPE | uppercase}}</b></p>
+                                    <input type="hidden"  value="{{openedRestaurants.CODE}}">
+                                    <button class="btn btn-outline-danger btn-block" name="btn{{openedRestaurants.CODE}}" value="{{openedRestaurants.CODE}}">See more...</button>
+                                </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -224,4 +210,19 @@
         </div>
     </div>     
 </body>
+<script>
+    $(document).on('click',"button[name*='btn']",function(){
+        var testando = $(this).val()
+        console.log("voce clicou no botao com o valor "+testando);
+        let parametros ={'restaurant':testando};
+            $.ajax({
+                method:"post",
+                data:parametros,
+                url:"/ChosenRestaurant"  
+            })
+            location.reload();
+    });
+
+</script>
+<script src="controllers/restaurantController.js"></script>
 </html>
